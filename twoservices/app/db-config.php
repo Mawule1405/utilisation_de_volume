@@ -1,6 +1,6 @@
 <?php
 
-const DB_DSN = 'mysql:host=localhost;dbname=ing';
+const DB_DSN = 'mysql:host=mysql_c;dbname=ing';
 const DB_USER = 'ing';
 const DB_PASS = 'ing';
 
