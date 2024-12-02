@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.7'
 
 services:
   # Service pour MariaDB
@@ -17,13 +17,13 @@ services:
     
   # Service pour l'application web (Apache + PHP)
   app:
-    build: ingapp
+    image: ingapp
     container_name: ingapp_c
     restart: always
     depends_on:
       - db  # Assure que le service DB est démarré avant
     ports:
-      - "8084:80"  # Mappe le port 80 du conteneur au port 80 de l'hôte
+      - 8084:80  # Mappe le port 80 du conteneur au port 80 de l'hôte
     volumes:
       - ./app:/var/www/html  # Moniteur pour les fichiers de l'application
     
