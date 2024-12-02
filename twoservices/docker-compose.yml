@@ -13,7 +13,7 @@ services:
       MYSQL_PASSWORD: ing     # Mot de passe pour l'utilisateur ing
     volumes:
       - db-volume:/var/lib/mysql          # Persistance des données de la base
-      - ./etudiants.sql:/docker-entrypoint<-initdb.d/etudiants.sql
+      - ./etudiants.sql:/docker-entrypoint-initdb.d/etudiants.sql
     
   # Service pour l'application web (Apache + PHP)
   app:
