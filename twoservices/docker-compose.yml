@@ -1,36 +1,32 @@
 version: '3.7'
 
 services:
-  # Service pour MariaDB
   db:
     image: mysql:5.7
     container_name: mysql_c
     restart: always
     volumes:
-      - db-volume:/var/lib/mysql          # Persistance des données de la base
+      - db-volume:/var/lib/mysql         
       - ./etudiants.sql:/docker-entrypoint-initdb.d/etudiants.sql
     environment:
-      MYSQL_ROOT_PASSWORD: ing # Définissez ici le mot de passe root pour MariaDB
-      MYSQL_DATABASE: ing              # Base de données initiale
-      MYSQL_USER: ing                  # Utilisateur pour la base de données
-      MYSQL_PASSWORD: ing     # Mot de passe pour l'utilisateur ing
+      MYSQL_ROOT_PASSWORD: ing 
+      MYSQL_DATABASE: ing             
+      MYSQL_USER: ing                 
+      MYSQL_PASSWORD: ing    
     
-    
-  # Service pour l'application web (Apache + PHP)
+
   app:
     image: ingapp
     container_name: ingapp_c
     restart: always
     volumes:
-      - ./app:/var/www/html  # Moniteur pour les fichiers de l'application
+      - ./app:/var/www/html  
     ports:
-      - 8084:80  # Mappe le port 80 du conteneur au port 80 de l'hôte
+      - 8084:80  
     depends_on:
-      - db  # Assure que le service DB est démarré avant
+      - db 
     
-    
-
 volumes:
-  db-volume:  # Volume persistant pour MariaDB
+  db-volume:  
 
 
